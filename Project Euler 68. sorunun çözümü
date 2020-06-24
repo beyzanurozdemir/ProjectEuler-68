@@ -1,0 +1,28 @@
+const _in_ = (e, ...es) => es.indexOf(e) !== -1
+let R = "0000000000000000"
+for (let s = 7; s <= 27; s++) {
+  let q = false
+  for (let a = 1; a <= 10 && !q; a++)
+    for (let b = 1; b <= 10; b++)
+      if (!_in_(b, a))
+        for (let c = 1; c <= 10; c++)
+          if (!_in_(c, a, b) && a + b + c === s)
+            for (let d = 1; d <= 10; d++)
+              if (!_in_(d, a, b, c))
+                for (let e = 1; e <= 10; e++)
+                  if (!_in_(e, a, b, c, d) && d + c + e === s)
+                    for (let f = 1; f <= 10; f++)
+                      if (!_in_(f, a, b, c, d, e))
+                        for (let g = 1; g <= 10; g++)
+                          if (!_in_(g, a, b, c, d, e, f) && f + e + g === s)
+                            for (let h = 1; h <= 10; h++)
+                              if (!_in_(h, a, b, c, d, e, f, g))
+                                for (let i = 1; i <= 10; i++)
+                                  if (!_in_(i, a, b, c, d, e, f, g, h) && h + g + i === s)
+                                    for (let j = 1; j <= 10; j++) {
+                                      if (!_in_(j, a, b, c, d, e, f, g, h, i) && j + i + b === s) {
+                                        let r = [a, b, c, d, c, e, f, e, g, h, g, i, j, i, b].join("")
+                                        q = true
+                                        if (R.localeCompare(r) === -1) R = r
+                                      }}}
+console.log(R)
